@@ -5,9 +5,10 @@ import subprocess
 from dotenv import load_dotenv
 import os
 
+print("Loading environment variables...")
+
 load_dotenv()  # Load environment variables from a .env file if present
 
-print("Loading environment variables...")
 print("Bot Token:", os.getenv("BOT_TOKEN"))
 
 # --- Configuration ---
@@ -23,6 +24,10 @@ SCREEN_SESSION_NAME = os.getenv("SCREEN_SESSION_NAME_SERVER")  # e.g., "mserver"
 # 3. The exact name of the role that can execute commands.
 #    This is case-sensitive and must match the role name in your Discord server.
 ALLOWED_ROLE_NAME = os.getenv("ALLOWED_ROLE_NAME")  # e.g., "Staff"
+
+print("Configuration:")
+print("SCREEN_SESSION_NAME:", SCREEN_SESSION_NAME)
+print("ALLOWED_ROLE_NAME:", ALLOWED_ROLE_NAME)  
 
 # --- Bot Setup ---
 intents = discord.Intents.default()
