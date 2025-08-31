@@ -30,7 +30,7 @@ print("SCREEN_SESSION_NAME:", SCREEN_SESSION_NAME)
 print("ALLOWED_ROLE_NAME:", ALLOWED_ROLE_NAME)  
 
 # --- Bot Setup ---
-intents = discord.Intents.default()
+intents = discord.Intents.all()  # Enable all intents (adjust as necessary) 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
@@ -46,13 +46,15 @@ async def on_ready():
         print(e)
 
 @bot.tree.command(name="mserverexec", description="Execute a command on the Minecraft server.")
-@app_commands.checks.has_role(ALLOWED_ROLE_NAME)
+#@app_commands.checks.has_role(ALLOWED_ROLE_NAME) #Just implement it on the server in the Integration panel
 async def mserverexec(interaction: discord.Interaction, command: str):
     """
     Takes a command as input and executes it in the specified screen session.
     The decorator above this function automatically checks for the required role.
     """
     try:
+
+        print(f"Received command from {interaction.user}: {command}")
         # The command to be sent to the screen session
         # The `stuff` command simulates typing in the screen session.
         # We append `\n` to simulate pressing Enter.

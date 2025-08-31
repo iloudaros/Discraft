@@ -10,6 +10,10 @@ create_venv:
 	python3 -m venv venv
 	. venv/bin/activate && pip install -r requirements.txt
 
+activate_venv:
+	@echo "To activate the virtual environment, run:"
+	@echo "source venv/bin/activate"
+
 test:
 	screen -dmS test_session
 	screen -S test_session -X stuff "echo 'Hello, World!' \n"
