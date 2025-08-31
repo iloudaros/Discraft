@@ -36,6 +36,8 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user.name}')
+    print(f"Bot is configured to allow the role: '{ALLOWED_ROLE_NAME}'") 
+    print('Bot is ready to receive commands.')
     print('Bot is ready to receive commands.')
     try:
         synced = await bot.tree.sync()
