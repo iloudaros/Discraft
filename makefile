@@ -6,6 +6,10 @@ printenv:
 	@echo ${SCREEN_SESSION_NAME_BOT}
 	@echo ${SCREEN_SESSION_NAME_SERVER}
 
+create_venv:
+	python3 -m venv venv
+	. venv/bin/activate && pip install -r requirements.txt
+
 test:
 	screen -dmS test_session
 	screen -S test_session -X stuff "echo 'Hello, World!' \n"
