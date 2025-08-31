@@ -5,6 +5,11 @@ import subprocess
 from dotenv import load_dotenv
 import os
 
+load_dotenv()  # Load environment variables from a .env file if present
+
+print("Loading environment variables...")
+print("Bot Token:", os.getenv("BOT_TOKEN"))
+
 # --- Configuration ---
 # You need to replace these values with your own.
 
