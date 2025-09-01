@@ -24,7 +24,7 @@ start_minecraft:
 	
 start_discord_bot:
 	screen -dmS ${SCREEN_SESSION_NAME_BOT}
-	screen -S ${SCREEN_SESSION_NAME_BOT} -X stuff "python3 discord_bot.py\n"
+	screen -S ${SCREEN_SESSION_NAME_BOT} -X stuff "source venv/bin/activate && python3 discord_bot.py\n"
 	
 start: start_minecraft start_discord_bot
 
