@@ -19,7 +19,7 @@ test:
 	screen -S test_session -X stuff "echo 'Hello, World!' \n"
 	
 start_minecraft:
-	screen -dmS ${SCREEN_SESSION_NAME_SERVER} -X stuff "java -jar fabric-server-launch.jar\n"
+	screen -dmS ${SCREEN_SESSION_NAME_SERVER} -X stuff "java -jar ../fabric-server-launch.jar\n"
 	
 start_discord_bot:
 	screen -dmS ${SCREEN_SESSION_NAME_BOT} -X stuff "python3 discord-bot.py\n"
