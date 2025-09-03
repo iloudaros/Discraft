@@ -20,7 +20,7 @@ test:
 	
 start_minecraft:
 	screen -dmS ${SCREEN_SESSION_NAME_SERVER}
-	screen -S ${SCREEN_SESSION_NAME_SERVER} -X stuff "java -jar ../fabric-server-launch.jar\n"
+	screen -S ${SCREEN_SESSION_NAME_SERVER} -X stuff "cd ../ && java -jar fabric-server-launch.jar\n"
 	
 start_discord_bot:
 	screen -dmS ${SCREEN_SESSION_NAME_BOT}
