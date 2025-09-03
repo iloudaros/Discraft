@@ -17,14 +17,16 @@ activate_venv:
 
 # Minecraft server management	
 start_minecraft:
-	screen -dmS ${SCREEN_SESSION_NAME_SERVER}
-	screen -S ${SCREEN_SESSION_NAME_SERVER} -X stuff "cd ../ && java -jar fabric-server-launch.jar\n"
+	@echo "Starting Minecraft server..."
+	@screen -dmS ${SCREEN_SESSION_NAME_SERVER}
+	@screen -S ${SCREEN_SESSION_NAME_SERVER} -X stuff "cd ../ && java -jar fabric-server-launch.jar\n"
+	@echo "Minecraft server started in screen session: ${SCREEN_SESSION_NAME_SERVER}."
 
 restart_minecraft:
 	@echo "Restarting Minecraft server..."
 	@screen -S ${SCREEN_SESSION_NAME_SERVER} -X stuff "stop\n"
 	@sleep 10
-	@screen -S ${SCREEN_SESSION_NAME_SERVER} -X quit
+	@-screen -S ${SCREEN_SESSION_NAME_SERVER} -X quit
 	@sleep 1
 	@screen -S ${SCREEN_SESSION_NAME_SERVER} -X stuff "cd ../ && java -jar fabric-server-launch.jar\n"
 	@echo "Minecraft server restarted."
@@ -32,8 +34,10 @@ restart_minecraft:
 
 # Discord bot management	
 start_discord_bot:
-	screen -dmS ${SCREEN_SESSION_NAME_BOT}
-	screen -S ${SCREEN_SESSION_NAME_BOT} -X stuff "source venv/bin/activate && python3 discord_bot.py\n"
+	@echo "Starting Discord bot..."
+	@screen -dmS ${SCREEN_SESSION_NAME_BOT}
+	@screen -S ${SCREEN_SESSION_NAME_BOT} -X stuff "source venv/bin/activate && python3 discord_bot.py\n"
+	@echo "Discord bot started in screen session: ${SCREEN_SESSION_NAME_BOT}."
 
 restart_discord_bot:
 	@echo "Restarting Discord bot..."
