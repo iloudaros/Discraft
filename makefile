@@ -24,7 +24,7 @@ start_minecraft:
 
 stop_minecraft:
 	@echo "Stopping Minecraft server..."
-	@screen -S ${SCREEN_SESSION_NAME_SERVER} -X stuff "stop\n"
+	@-screen -S ${SCREEN_SESSION_NAME_SERVER} -X stuff "stop\n"
 	@sleep 10
 	@-screen -S ${SCREEN_SESSION_NAME_SERVER} -X quit
 	@echo "Minecraft server stopped."
@@ -41,7 +41,7 @@ start_discord_bot:
 
 stop_discord_bot:
 	@echo "Stopping Discord bot..."
-	@screen -S ${SCREEN_SESSION_NAME_BOT} -X quit
+	@-screen -S ${SCREEN_SESSION_NAME_BOT} -X quit
 	@echo "Discord bot stopped."
 
 restart_discord_bot: stop_discord_bot start_discord_bot
