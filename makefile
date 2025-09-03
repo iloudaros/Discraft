@@ -22,14 +22,14 @@ start_minecraft:
 	@screen -S ${SCREEN_SESSION_NAME_SERVER} -X stuff "cd ../ && java -jar fabric-server-launch.jar\n"
 	@echo "Minecraft server started in screen session: ${SCREEN_SESSION_NAME_SERVER}."
 
-restart_minecraft:
-	@echo "Restarting Minecraft server..."
+stop_minecraft:
+	@echo "Stopping Minecraft server..."
 	@screen -S ${SCREEN_SESSION_NAME_SERVER} -X stuff "stop\n"
 	@sleep 10
 	@-screen -S ${SCREEN_SESSION_NAME_SERVER} -X quit
-	@sleep 1
-	@screen -S ${SCREEN_SESSION_NAME_SERVER} -X stuff "cd ../ && java -jar fabric-server-launch.jar\n"
-	@echo "Minecraft server restarted."
+	@echo "Minecraft server stopped."
+
+restart_minecraft: stop_minecraft start_minecraft
 	
 
 # Discord bot management	
@@ -39,16 +39,18 @@ start_discord_bot:
 	@screen -S ${SCREEN_SESSION_NAME_BOT} -X stuff "source venv/bin/activate && python3 discord_bot.py\n"
 	@echo "Discord bot started in screen session: ${SCREEN_SESSION_NAME_BOT}."
 
-restart_discord_bot:
-	@echo "Restarting Discord bot..."
+stop_discord_bot:
+	@echo "Stopping Discord bot..."
 	@screen -S ${SCREEN_SESSION_NAME_BOT} -X quit
-	@sleep 5
-	@screen -S ${SCREEN_SESSION_NAME_BOT} -X stuff "source venv/bin/activate && python3 discord_bot.py\n"	
-	@echo "Discord bot restarted."
+	@echo "Discord bot stopped."
+
+restart_discord_bot: stop_discord_bot start_discord_bot
 
 
 # Combined commands
 start: start_minecraft start_discord_bot
+
+stop: stop_minecraft stop_discord_bot
 
 restart: restart_minecraft restart_discord_bot
 
